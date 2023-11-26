@@ -1,12 +1,32 @@
+/* eslint-disable no-restricted-syntax */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { format, parse } from 'date-fns';
 import CONSTANTS from '../constants';
 
-async function getDailyForecast(apiKey, local) {
-  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${local}&aqi=no&days=4`, { cors: true });
-  const dailyForecast = await response.json();
-  console.log(dailyForecast);
-  return dailyForecast;
+function getSavedLocation() {
+  const location = localStorage.getItem('location');
+  if (location == null) localStorage.setItem('location', 'Santiago');
+  return localStorage.getItem('location');
+}
+
+function setSavedLocation(loc) {
+  localStorage.setItem('location', loc);
+}
+
+async function getDailyForecast(apiKey) {
+  const location = getSavedLocation();
+  try {
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=no&days=4`, { cors: true });
+    const dailyForecast = await response.json();
+    if (dailyForecast.error) {
+      alert('No data found for entered location. Going back to default location.');
+      setSavedLocation('Santiago');
+      return getDailyForecast(CONSTANTS.API_KEY);
+    }
+    return dailyForecast;
+  } catch (err) {
+    return console.error(err);
+  }
 }
 
 function getHeaderInformation(dailyForecast) {
@@ -20,7 +40,6 @@ function getDailyTemperatures(dailyForecast) {
   // Data must be an array of temperatures like [12, 11, 13, 21, 26, 27, 22, 17];
   const dailyInfo = dailyForecast.forecast.forecastday[0].hour;
   const formattedData = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const hour of CONSTANTS.HOURS_TO_CHECK) {
     formattedData.push(Math.round(dailyInfo[hour].temp_c));
   }
@@ -30,7 +49,6 @@ function getDailyTemperatures(dailyForecast) {
 function getDailyPrecipitationChance(dailyForecast) {
   const dailyInfo = dailyForecast.forecast.forecastday[0].hour;
   const formattedData = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const hour of CONSTANTS.HOURS_TO_CHECK) {
     // Snow is also precipitation :)
     // TODO: This part could be improved due to the fact that there could be a low chance
@@ -47,9 +65,8 @@ function getDailyPrecipitationChance(dailyForecast) {
 function getDailyWindSpeed(dailyForecast) {
   const dailyInfo = dailyForecast.forecast.forecastday[0].hour;
   const formattedData = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const hour of CONSTANTS.HOURS_TO_CHECK) {
-    formattedData.push(Math.round(dailyInfo[hour].maxwind_kph));
+    formattedData.push(Math.round(dailyInfo[hour].wind_kph));
   }
   return formattedData;
 }
@@ -72,6 +89,8 @@ function getDayForecast(dailyForecast, day) {
 const forecastManager = {
   getDailyTemperatures,
   getHeaderInformation,
+  getSavedLocation,
+  setSavedLocation,
   getDailyForecast,
   getDayForecast,
   getDailyPrecipitationChance,

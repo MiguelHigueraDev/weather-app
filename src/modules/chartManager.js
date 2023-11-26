@@ -44,7 +44,7 @@ function createChart() {
       line: {
         borderColor: '#FF0000',
       },
-      backgroundColor: '#0096FF',
+      backgroundColor: '#FF5F1F',
       tooltips: {
         enabled: true,
         mode: 'index',
@@ -55,13 +55,31 @@ function createChart() {
   });
 }
 
-function updateTemperatures(newData) {
+function updateData(newData) {
   forecast.data.datasets[0].data = newData;
   forecast.update();
 }
 
+function updateTemperatures(newData) {
+  forecast.options.backgroundColor = '#FF5F1F';
+  forecast.data.datasets[0].label = 'Temperature (°C)';
+  updateData(newData);
+}
+
+function updatePrecipitationChance(newData) {
+  forecast.options.backgroundColor = '#0096FF';
+  forecast.data.datasets[0].label = 'Chance of rain (%)';
+  updateData(newData);
+}
+
+function updateWindSpeed(newData) {
+  forecast.options.backgroundColor = '#32CD32';
+  forecast.data.datasets[0].label = 'Wind speed (km/h)';
+  updateData(newData);
+}
+
 const chartManager = {
-  createChart, updateTemperatures,
+  createChart, updateTemperatures, updatePrecipitationChance, updateWindSpeed,
 };
 
 export default chartManager;

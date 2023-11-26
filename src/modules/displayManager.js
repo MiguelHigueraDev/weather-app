@@ -7,6 +7,10 @@ const temperature = document.querySelector('#forecast-temperature');
 const condition = document.querySelector('#forecast-condition');
 const location = document.querySelector('#weather-location-text');
 
+const temperatureBtn = document.querySelector('#temperature-btn');
+const precipitationBtn = document.querySelector('#precipitation-btn');
+const windBtn = document.querySelector('#wind-btn');
+
 const getWeatherIcon = (code) => {
   const { icon } = CONSTANTS.WEATHER_CODES.find((w) => w.code === code);
   return icon;
@@ -20,12 +24,34 @@ function updateHeader(code, temp, cond, country, city) {
   location.textContent = `${city}, ${country}`;
 }
 
-function updateChart(type, forecast) {
+function resetSelectedBtn() {
+  temperatureBtn.classList.remove('selected-info');
+  precipitationBtn.classList.remove('selected-info');
+  windBtn.classList.remove('selected-info');
+}
+
+async function updateChart(type) {
+  resetSelectedBtn();
+  const loc = forecastManager.getSavedLocation();
+  const forecast = await forecastManager.getDailyForecast(CONSTANTS.API_KEY, loc);
   if (type === 'temperature') {
     const temps = forecastManager.getDailyTemperatures(forecast);
     chartManager.updateTemperatures(temps);
+    temperatureBtn.classList.add('selected-info');
+  } else if (type === 'precipitation') {
+    const precipitation = forecastManager.getDailyPrecipitationChance(forecast);
+    chartManager.updatePrecipitationChance(precipitation);
+    precipitationBtn.classList.add('selected-info');
+  } else if (type === 'wind') {
+    const windSpeeds = forecastManager.getDailyWindSpeed(forecast);
+    chartManager.updateWindSpeed(windSpeeds);
+    windBtn.classList.add('selected-info');
   }
 }
+
+temperatureBtn.addEventListener('click', () => { updateChart('temperature'); });
+precipitationBtn.addEventListener('click', () => { updateChart('precipitation'); });
+windBtn.addEventListener('click', () => { updateChart('wind'); });
 
 function updateDayForecast(index, icon, text, day, max, min) {
   const card = document.querySelector(`#day-${index}`);
@@ -41,10 +67,11 @@ function updateDayForecast(index, icon, text, day, max, min) {
   low.textContent = `${min}°`;
 }
 
-async function updateForecast(apiKey, local) {
+async function updateForecast(apiKey) {
+  const local = localStorage.getItem('location');
   const dailyForecast = await forecastManager.getDailyForecast(apiKey, local);
   updateHeader(...forecastManager.getHeaderInformation(dailyForecast));
-  updateChart('temperature', dailyForecast);
+  updateChart('temperature');
   // Update the 3 days
   updateDayForecast(1, ...forecastManager.getDayForecast(dailyForecast, 1));
   updateDayForecast(2, ...forecastManager.getDayForecast(dailyForecast, 2));
