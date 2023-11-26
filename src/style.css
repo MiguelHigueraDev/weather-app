@@ -53,7 +53,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	height: 70%;
+	height: 900px;
 	padding: 16px;
 	gap: 10px;
 	background-color: white;
@@ -67,7 +67,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	height: 30%;
+	height: 32%;
 	width: 100%;
 	align-items: center;
 	justify-content: end;
@@ -92,16 +92,107 @@ main {
 .weather-location {
 	display: flex;
 	flex-direction: column;
-	height: 15%;
+	height: 3%;
 	width: 100%;
 	align-items: center;
 	justify-content: start;
 }
 
+/* Daily forecast */
+
+.info-selector {
+	align-self: flex-start;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.info-selector ul {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+}
+
+.info-selector li {
+	list-style-type: none;
+	display: flex;
+}
+
+.selected-info {
+	font-weight: 700;
+}
+
 .daily-forecast {
 	display: flex;
-	flex-direction: row;
-	height: 25%;
+	flex-direction: column;
+	height: 30%;
 	width: 100%;
 	align-items: center;
 }
+
+/* Weekly (3 days) forecast */
+
+.weekly-forecast {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	height: 25%;
+	width: 100%;
+	align-items: center;
+	gap: 20px;
+}
+
+.weather-cards {
+	display: flex;
+	gap: 20px;
+}
+
+.weather-card {
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+	width: 140px;
+	height: 160px;
+	background-color: #e6e3e3;
+	align-items: center;
+	justify-content: center;
+	border-radius: 16px;
+}
+
+.weather-card img {
+	width: 90px;
+	height: 90px;
+}
+
+.weather-card-text {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+
+.high-and-low {
+	display: flex;
+	gap: 5px;
+	justify-content: center;
+}
+
+.day {
+	font-size: 1.1rem;
+}
+
+.daily-forecast {
+	font-size: 1rem;
+}
+
+.high {
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.low {
+	font-weight: 300;
+	font-size: 0.9rem;
+}
+

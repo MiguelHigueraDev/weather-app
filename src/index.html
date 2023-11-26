@@ -10,7 +10,7 @@
 <body>
     <main>
         <div class="weather-temperature">
-            <img src="./icons/svg/thunderstorms-day-rain.svg">
+            <img src="./icons/svg/thunderstorms-day-rain.svg" alt="Thunderstorm">
             <h1>19°C</h1>
             <h3>Thunderstorm</h3>
         </div>
@@ -18,7 +18,52 @@
             <h3>Los Ángeles, Chile</h3>
         </div>
         <div class="daily-forecast">
+            <div class="info-selector">
+                <ul>
+                    <li class="selected-info">Temperature</li>
+                    <li>Precipitation</li>
+                    <li>Wind</li>
+                </ul>
+            </div>
             <canvas id="daily-forecast-chart"></canvas>
+        </div>
+        <div class="weekly-forecast">
+            <h3>Next 3 days</h3>
+            <div class="weather-cards">
+                <div class="weather-card">
+                    <img src="./icons/svg/clear-day.svg">
+                    <div class="weather-card-text">
+                        <h4 class="day">Monday</h4>
+                        <h5 class="daily-forecast">Sunny</h5>
+                        <div class="high-and-low">
+                            <p class="high">28°</p>
+                            <p class="low">13°</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <img src="./icons/svg/rain.svg">
+                    <div class="weather-card-text">
+                        <h4 class="day">Tuesday</h4>
+                        <h5 class="daily-forecast">Rain</h5>
+                        <div class="high-and-low">
+                            <p class="high">28°</p>
+                            <p class="low">13°</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <img src="./icons/svg/cloudy.svg">
+                    <div class="weather-card-text">
+                        <h4 class="day">Wednesday</h4>
+                        <h5 class="daily-forecast">Cloudy</h5>
+                        <div class="high-and-low">
+                            <p class="high">28°</p>
+                            <p class="low">13°</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>
