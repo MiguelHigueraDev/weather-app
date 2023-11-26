@@ -9,19 +9,25 @@ const searchModal = document.querySelector('#city-search');
 const searchInput = document.querySelector('#city');
 const searchBtn = document.querySelector('#get-weather-btn');
 const form = document.querySelector('form');
+const creditsModalBtn = document.querySelector('#credits-btn');
+const creditsModal = document.querySelector('#credits-modal');
 
 searchModalBtn.addEventListener('click', () => {
   searchInput.value = '';
   searchModal.showModal();
 });
 
-searchBtn.addEventListener('click', () => {
+creditsModalBtn.addEventListener('click', () => creditsModal.showModal());
+
+function updateLocation() {
   if (searchInput.value.length > 2) {
     forecastManager.setSavedLocation(searchInput.value);
     displayManager.updateForecast(CONSTANTS.API_KEY);
     searchModal.close();
   }
-});
+}
+
+searchBtn.addEventListener('click', updateLocation);
 
 displayManager.startUI();
 chartManager.createChart();
@@ -29,11 +35,7 @@ chartManager.createChart();
 // Disable form onSubmit
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (searchInput.value.length > 2) {
-    forecastManager.setSavedLocation(searchInput.value);
-    displayManager.updateForecast(CONSTANTS.API_KEY);
-    searchModal.close();
-  }
+  updateLocation();
 });
 
 const modals = document.querySelectorAll('.modal');

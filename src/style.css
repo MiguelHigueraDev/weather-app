@@ -304,7 +304,7 @@ form button {
 	border: 0;
 	background-color: transparent;
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	cursor: pointer;
 }
 
@@ -322,4 +322,14 @@ form button {
 	transition-duration: 300ms;
 	transition-property: opacity;
 	transition-timing-function: ease-in-out;
+}
+
+a {
+	text-decoration: none;
+	font-weight: 600;
+	color: black;
+}
+
+a:hover {
+	color: rgb(166, 69, 5);
 }
