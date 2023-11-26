@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { format, parse } from 'date-fns';
 import CONSTANTS from '../constants';
 
@@ -12,7 +13,7 @@ function getHeaderInformation(dailyForecast) {
   const { code, text } = dailyForecast.current.condition;
   const { temp_c: temp } = dailyForecast.current;
   const { country, name: city } = dailyForecast.location;
-  return [code, temp, text, country, city];
+  return [code, Math.round(temp), text, country, city];
 }
 
 function getDailyTemperatures(dailyForecast) {

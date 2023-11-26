@@ -33,8 +33,8 @@ function updateDayForecast(index, icon, text, day, max, min) {
   img.src = getWeatherIcon(icon);
   const dayDiv = card.querySelector('.day');
   dayDiv.textContent = day;
-  const dayForecast = card.querySelector('.daily-forecast');
-  dayForecast.textContent = text;
+  const dayCondition = card.querySelector('.daily-condition');
+  dayCondition.textContent = text;
   const high = card.querySelector('.high');
   high.textContent = `${max}°`;
   const low = card.querySelector('.low');
