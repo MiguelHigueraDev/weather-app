@@ -12,9 +12,10 @@ Chart.register(Tooltip);
 
 const chart = document.getElementById('daily-forecast-chart');
 const data = [12, 11, 13, 21, 26, 27, 22, 17];
+let forecast;
 
 function createChart() {
-  const forecast = new Chart(chart, {
+  forecast = new Chart(chart, {
     type: 'line',
     data: {
       labels: ['04:00', '07:00', '10:00', '13:00', '16:00', '19:00', '22:00', '01:00'],
@@ -54,8 +55,13 @@ function createChart() {
   });
 }
 
+function updateTemperatures(newData) {
+  forecast.data.datasets[0].data = newData;
+  forecast.update();
+}
+
 const chartManager = {
-  createChart,
+  createChart, updateTemperatures,
 };
 
 export default chartManager;

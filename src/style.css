@@ -169,7 +169,7 @@ main {
 	flex-direction: column;
 	padding: 16px;
 	width: 140px;
-	height: 160px;
+	height: 200px;
 	background-color: #e6e3e3;
 	align-items: center;
 	justify-content: center;
@@ -184,7 +184,7 @@ main {
 .weather-card-text {
 	display: flex;
 	flex-direction: column;
-	gap: 1px;
+	gap: 3px;
 }
 
 .high-and-low {
@@ -195,10 +195,11 @@ main {
 
 .day {
 	font-size: 1.1rem;
+	text-align: center;
 }
 
 .daily-forecast {
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 
 .high {
@@ -208,6 +209,6 @@ main {
 
 .low {
 	font-weight: 300;
-	font-size: 0.9rem;
+	font-size: 1rem;
 }
 

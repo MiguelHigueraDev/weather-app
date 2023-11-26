@@ -1,20 +1,8 @@
+import { format, parse } from 'date-fns';
 import CONSTANTS from '../constants';
 
-const image = document.querySelector('#forecast-icon');
-const temperature = document.querySelector('#forecast-temperature');
-const condition = document.querySelector('#forecast-condition');
-const location = document.querySelector('#weather-location-text');
-
-function updateHeader(code, temp, cond, country, city) {
-  const { icon } = CONSTANTS.WEATHER_CODES.find((weather) => weather.code === code);
-  image.src = icon;
-  temperature.textContent = `${temp}`;
-  condition.textContent = cond;
-  location.textContent = `${city}, ${country}`;
-}
-
 async function getDailyForecast(apiKey, local) {
-  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${local}&aqi=no`, { cors: true });
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${local}&aqi=no&days=4`, { cors: true });
   const dailyForecast = await response.json();
   console.log(dailyForecast);
   return dailyForecast;
@@ -28,21 +16,33 @@ function getHeaderInformation(dailyForecast) {
 }
 
 function getDailyTemperatures(dailyForecast) {
-  // Data must be in format [12, 11, 13, 21, 26, 27, 22, 17];
-  // Where ['04:00', '07:00', '10:00', '13:00', '16:00', '19:00', '22:00', '01:00'],
+  // Data must be an array of temperatures like [12, 11, 13, 21, 26, 27, 22, 17];
   const dailyTemps = dailyForecast.forecast.forecastday[0].hour;
-  const formattedData = dailyTemps;
+  const formattedData = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const hour of CONSTANTS.HOURS_TO_CHECK) {
+    formattedData.push(Math.round(dailyTemps[hour].temp_c));
+  }
+  return formattedData;
 }
 
-async function updateCurrent(apiKey, local) {
-  const dailyForecast = await getDailyForecast(apiKey, local);
-  updateHeader(...getHeaderInformation(dailyForecast));
-}
+const formatDate = (date) => {
+  const parsedDate = parse(date, 'yyyy-MM-dd', new Date());
+  return format(parsedDate, 'EEEE');
+};
 
-updateCurrent(CONSTANTS.API_KEY, 'Santiago');
+function getDayForecast(dailyForecast, day) {
+  const { day: dailyInfo } = dailyForecast.forecast.forecastday[day];
+  // Date must be formatted before being returned
+  let { date } = dailyForecast.forecast.forecastday[day];
+  date = formatDate(date);
+  const { maxtemp_c: maxTemp, mintemp_c: minTemp } = dailyInfo;
+  const { code, text } = dailyInfo.condition;
+  return [code, text, date, Math.round(maxTemp), Math.round(minTemp)];
+}
 
 const forecastManager = {
-  updateCurrent,
+  getDailyTemperatures, getHeaderInformation, getDailyForecast, getDayForecast,
 };
 
 export default forecastManager;

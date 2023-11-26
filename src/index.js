@@ -1,4 +1,6 @@
 import chartManager from './modules/chartManager';
-import forecastManager from './modules/forecastManager';
+import displayManager from './modules/displayManager';
+
+displayManager.startUI();
 
 chartManager.createChart();
