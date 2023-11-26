@@ -1,0 +1,1 @@
+const dailyForecastChart = document.getElementById('daily-forecast-chart');

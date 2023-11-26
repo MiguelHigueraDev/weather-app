@@ -1,0 +1,107 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html {
+    box-sizing: border-box;
+}
+  
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* Main Container */
+
+body {
+	display: grid;
+	background-color: #ddd;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	height: 70%;
+	padding: 16px;
+	gap: 10px;
+	background-color: white;
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Header */
+
+.weather-temperature {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	height: 30%;
+	width: 100%;
+	align-items: center;
+	justify-content: end;
+}
+
+.weather-temperature img {
+	position: absolute;
+	bottom: 130px;
+	width: 10rem;
+}
+
+.weather-temperature h1 {
+	font-size: 6rem;
+}
+
+.weather-temperature h3 {
+	font-size: 2rem;
+}
+
+/* Location */
+
+.weather-location {
+	display: flex;
+	flex-direction: column;
+	height: 15%;
+	width: 100%;
+	align-items: center;
+	justify-content: start;
+}
+
+.daily-forecast {
+	display: flex;
+	flex-direction: row;
+	height: 25%;
+	width: 100%;
+	align-items: center;
+}
