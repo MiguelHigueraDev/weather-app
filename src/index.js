@@ -24,3 +24,18 @@ searchBtn.addEventListener('click', () => {
 
 displayManager.startUI();
 chartManager.createChart();
+
+const modals = document.querySelectorAll('.modal');
+// eslint-disable-next-line no-restricted-syntax
+for (const modal of modals) {
+  modal.addEventListener('click', (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isInDialog = rect.top <= e.clientY
+      && e.clientY <= rect.top + rect.height
+      && rect.left <= e.clientX
+      && e.clientX <= rect.left + rect.width;
+    if (!isInDialog) {
+      modal.close();
+    }
+  });
+}
