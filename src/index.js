@@ -2,6 +2,7 @@ import CONSTANTS from './constants';
 import chartManager from './modules/chartManager';
 import displayManager from './modules/displayManager';
 import forecastManager from './modules/forecastManager';
+import './style.css';
 
 const searchModalBtn = document.querySelector('#search');
 const searchModal = document.querySelector('#city-search');
