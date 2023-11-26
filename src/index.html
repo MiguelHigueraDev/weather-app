@@ -15,13 +15,13 @@
         <div class="weather-temperature">
             <img id="forecast-icon" src="./icons/svg/thunderstorms-day-rain.svg" alt="Thunderstorm">
             <div class="forecast-temperature-container">
-                <h1 id="forecast-temperature">19</h1>
+                <h1 id="forecast-temperature">69</h1>
                 <p>°C</p>
             </div>
-            <h3 id="forecast-condition">Thunderstorm</h3>
+            <h3 id="forecast-condition">Monsoon</h3>
         </div>
         <div class="weather-location">
-            <h3 id="weather-location-text">Los Ángeles, Chile</h3>
+            <h3 id="weather-location-text">City, Country</h3>
         </div>
         <div class="daily-forecast">
             <div class="info-selector">
@@ -74,6 +74,15 @@
                 </div>
             </div>
         </div>
+        <button id="search">Search another city</button>
+        <dialog id="city-search">
+            <form>
+                <label for="city">Enter a city or country</label>
+                <input id="city" required minlength="3">
+                <button type="button" id="get-weather-btn">Get weather</button>
+            </form>
+        </dialog>
     </main>
+    <button id="credits-btn">Credits</button>
 </body>
 </html>

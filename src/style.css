@@ -42,7 +42,9 @@ html {
 /* Main Container */
 
 body {
-	display: grid;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 	background-color: #ddd;
 	justify-content: center;
 	align-items: center;
@@ -66,9 +68,9 @@ main {
 
 .weather-temperature {
 	display: flex;
-	flex-direction: column;
 	position: relative;
-	height: 32%;
+	flex-direction: column;
+	height: 30%;
 	width: 100%;
 	align-items: center;
 	justify-content: end;
@@ -76,8 +78,8 @@ main {
 
 .weather-temperature img {
 	position: absolute;
-	bottom: 130px;
-	width: 10rem;
+	bottom: 125px;
+	width: 9rem;
 }
 
 .weather-temperature h1 {
@@ -92,15 +94,25 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 5px;
+}
+
+.forecast-temperature-container h1 {
+	height: 120px;
+	letter-spacing: 1px;
+	font-weight: 800;
 }
 
 .forecast-temperature-container p {
 	align-self: flex-start;
+	position: relative;
 	margin-top: 20px;
 	font-size: 1.5rem;
 	font-weight: 300;
 	color: #2a2a2a;
+}
+
+#forecast-condition {
+	font-weight: 700;
 }
 
 /* Location */
@@ -112,6 +124,10 @@ main {
 	width: 100%;
 	align-items: center;
 	justify-content: start;
+}
+
+#weather-location-text {
+	font-weight: 600;
 }
 
 /* Daily forecast */
@@ -170,7 +186,7 @@ main {
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
-	height: 25%;
+	height: 30%;
 	width: 100%;
 	align-items: center;
 	gap: 20px;
@@ -235,3 +251,55 @@ main {
 	font-size: 1rem;
 }
 
+/* Search modal */
+
+#search {
+	appearance: none;
+	border: 0;
+	background-color: transparent;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
+	width: 180px;
+	margin: 0 auto;
+}
+
+dialog {
+	border: 2px solid black;
+	border-radius: 16px;
+	padding: 20px;
+}
+
+form {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+form input {
+	padding: 6px;
+	font-size: 1.2rem;
+}
+
+form button {
+	appearance: none;
+	padding: 4px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	background-color: transparent;
+	border: 1px solid orange;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+/* Credits */
+
+#credits-btn {
+	appearance: none;
+	border: 0;
+	background-color: transparent;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
+}
