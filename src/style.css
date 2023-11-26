@@ -87,6 +87,21 @@ main {
 	font-size: 2rem;
 }
 
+.forecast-temperature-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.forecast-temperature-container p {
+	align-self: flex-start;
+	margin-top: 20px;
+	font-size: 1.5rem;
+	font-weight: 300;
+	color: #2a2a2a;
+}
+
 /* Location */
 
 .weather-location {
