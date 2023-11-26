@@ -303,3 +303,19 @@ form button {
 	font-size: 1rem;
 	cursor: pointer;
 }
+
+/* Animations */
+
+.transparent {
+	opacity: 0;
+}
+
+.visible {
+	opacity: 1;
+}
+
+.animated {
+	transition-duration: 300ms;
+	transition-property: opacity;
+	transition-timing-function: ease-in-out;
+}

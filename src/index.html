@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <div class="weather-temperature">
+        <div class="weather-temperature animated">
             <img id="forecast-icon" src="./icons/svg/thunderstorms-day-rain.svg" alt="Thunderstorm">
             <div class="forecast-temperature-container">
                 <h1 id="forecast-temperature">69</h1>
@@ -18,10 +18,10 @@
             </div>
             <h3 id="forecast-condition">Monsoon</h3>
         </div>
-        <div class="weather-location">
+        <div class="weather-location animated">
             <h3 id="weather-location-text">City, Country</h3>
         </div>
-        <div class="daily-forecast">
+        <div class="daily-forecast animated">
             <div class="info-selector">
                 <ul>
                     <li><button class="info-btns selected-info" id="temperature-btn">Temperature</button></li>
@@ -31,7 +31,7 @@
             </div>
             <canvas id="daily-forecast-chart"></canvas>
         </div>
-        <div class="weekly-forecast">
+        <div class="weekly-forecast animated">
             <h3>Next 3 days</h3>
             <div class="weather-cards">
                 <div class="weather-card" id="day-1">
@@ -72,8 +72,8 @@
                 </div>
             </div>
         </div>
-        <button id="search">Search another city</button>
-        <dialog id="city-search" class="modal">
+        <button id="search" class="animated">Search another city</button>
+        <dialog id="city-search" class="animated" class="modal">
             <form>
                 <label for="city">Enter a city or country</label>
                 <input id="city" required minlength="3">
