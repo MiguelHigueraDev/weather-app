@@ -293,6 +293,10 @@ form button {
 	cursor: pointer;
 }
 
+::backdrop {
+	background-color: #2a2a2a7a;
+}
+
 /* Credits */
 
 #credits-btn {

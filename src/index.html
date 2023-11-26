@@ -10,18 +10,18 @@
 </head>
 <body>
     <main>
-        <div class="weather-temperature animated">
+        <div class="weather-temperature animated transparent">
             <img id="forecast-icon" src="./icons/svg/thunderstorms-day-rain.svg" alt="Thunderstorm">
             <div class="forecast-temperature-container">
-                <h1 id="forecast-temperature">69</h1>
+                <h1 id="forecast-temperature"></h1>
                 <p>°C</p>
             </div>
-            <h3 id="forecast-condition">Monsoon</h3>
+            <h3 id="forecast-condition"></h3>
         </div>
-        <div class="weather-location animated">
+        <div class="weather-location animated transparent">
             <h3 id="weather-location-text">City, Country</h3>
         </div>
-        <div class="daily-forecast animated">
+        <div class="daily-forecast animated transparent">
             <div class="info-selector">
                 <ul>
                     <li><button class="info-btns selected-info" id="temperature-btn">Temperature</button></li>
@@ -31,7 +31,7 @@
             </div>
             <canvas id="daily-forecast-chart"></canvas>
         </div>
-        <div class="weekly-forecast animated">
+        <div class="weekly-forecast animated transparent">
             <h3>Next 3 days</h3>
             <div class="weather-cards">
                 <div class="weather-card" id="day-1">
@@ -72,9 +72,9 @@
                 </div>
             </div>
         </div>
-        <button id="search" class="animated">Search another city</button>
-        <dialog id="city-search" class="animated" class="modal">
-            <form>
+        <button id="search" class="animated transparent">Search another city</button>
+        <dialog id="city-search" class="animated transparent modal">
+            <form id="city-form">
                 <label for="city">Enter a city or country</label>
                 <input id="city" required minlength="3">
                 <button type="button" id="get-weather-btn">Get weather</button>
