@@ -35,13 +35,13 @@ module.exports = {
         use: ['svg-inline-loader'],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/icons/', // Set the output path for images
+              outputPath: 'assets/backgrounds/', // Set the output path for images
             },
           },
         ],

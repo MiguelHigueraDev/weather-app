@@ -94,13 +94,8 @@ async function updateForecast(apiKey) {
   toggleVisibility(true);
 }
 
-function startUI() {
-  // First update current information (header)
-  updateForecast(CONSTANTS.API_KEY, 'Cincinnati');
-}
-
 const displayManager = {
-  updateForecast, startUI,
+  updateForecast,
 };
 
 export default displayManager;

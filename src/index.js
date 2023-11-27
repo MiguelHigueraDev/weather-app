@@ -29,7 +29,7 @@ function updateLocation() {
 
 searchBtn.addEventListener('click', updateLocation);
 
-displayManager.startUI();
+displayManager.updateForecast(CONSTANTS.API_KEY);
 chartManager.createChart();
 
 // Disable form onSubmit
